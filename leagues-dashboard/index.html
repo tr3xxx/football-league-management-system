@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Football League Management System</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="leagues-dashboard.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+</head>
+<body>
+<div id="sidebar">
+    <div id="title">Football<br> League Management System</div>
+    <hr>
+    <nav>
+        <a href="#">+ Add a League</a>
+        <a href="#">ⓘ About</a>
+    </nav>
+</div>
+
+<div id="main-content">
+    <header>
+        <form>
+            <input type="text" placeholder="Search...">
+            <button type="submit">Search</button>
+        </form>
+    </header>
+    <main>
+        <div id="leagues-container"></div>
+    </main>
+</div>
+
+</body>
+</html>

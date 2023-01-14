@@ -1,0 +1,26 @@
+{
+  "name": "football-league-management-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "electron ."
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^22.0.2",
+    "electron-rebuild": "^3.2.9",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.9",
+    "sql.js": "^1.8.0",
+    "sqlite-electron": "^2.2.5",
+    "sqlite3": "^5.1.4",
+    "vue": "^3.2.45",
+    "webpack-node-externals": "^3.0.0"
+  }
+}
