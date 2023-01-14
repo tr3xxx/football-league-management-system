@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow} = require('electron')
 const path = require("path");
 
 
@@ -20,7 +20,10 @@ function createWindow () {
     win.loadFile('leagues-dashboard/index.html')
 
     // Öffnen Sie die DevTools.
-    win.webContents.openDevTools()
+   // win.webContents.openDevTools()
+
+    win.maximize();
+
 }
 
 app.whenReady().then(createWindow)

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Football League Management System</title>
+    <link rel="stylesheet" href="./style.css">
+    <script type="module" src="./create-league.js"></script>
+</head>
+<body>
+<div id="sidebar">
+    <div id="title">Create new<br> League</div>
+    <hr>
+    <nav>
+        <a onclick="function createLeague() { window.location.assign('../leagues-dashboard/index.html');} createLeague()">← Go Back</a>
+        <a onclick="function about() { window.location.assign('../about/index.html');} about()">ⓘ About</a>
+    </nav>
+</div>
+<div id="main-content">
+    <header>
+        <h1>Customize the league settings</h1>
+    </header>
+    <main>
+        <form>
+            <h3>Settings</h3>
+            <div class="form-group">
+                <label for="league-name">League Name</label>
+                <input type="text" id="league-name" name="league-name" placeholder="ex: Bundesliga" required>
+            </div>
+            <div class="form-group">
+                <label for="league-description">League Description</label>
+                <input type="text" id="league-description" name="league-description" placeholder="ex: German top-flight professional football league." required>
+            </div>
+            <div class="form-group">
+                <label for="league-teams">Number of Teams</label>
+                <input type="number" id="league-teams" name="league-teams" placeholder="ex: 18" required>
+            </div>
+            <div class="form-group">
+                <label for="league-points-win">Number of points for a win</label>
+                <input type="number" id="league-points-win" placeholder="ex: 3" required>
+            </div>
+            <div class="form-group">
+                <label for="league-points-draw">Number of points for a draw</label>
+                <input type="number" id="league-points-draw" placeholder="ex: 1" required>
+            </div>
+            <div class="form-group">
+                <label for="league-points-loose">Number of points for a loos</label>
+                <input type="number" id="league-points-loose" placeholder="ex: 0" required>
+            </div>
+            <div class="form-group">
+                <label for="league-place-top">Places up to win/qualify</label>
+                <input type="number" id="league-place-top" placeholder="ex: 1" required>
+            </div>
+            <div class="form-group">
+                <label for="league-place-down">Places down to dismount</label>
+                <input type="number" id="league-place-bottom" placeholder="ex: 16" required>
+            </div>
+            <div id="team-box">
+                <h3>Teams</h3>
+                <form id="team-form">
+                    <div class="form-group">
+                        <label for="team-name">Team Name</label>
+                        <input type="text" id="team-name" name="team-name" placeholder="ex: Borussia Dortmund">
+                        <br>
+                        <div class="form-group">
+                            <button type="submit" id="add-team">Add Team</button>
+                        </div>
+                    </div>
+                </form>
+                <div id="team-list-container">
+                    <ul id="team-list"></ul>
+                </div>
+                <div id="team-count">0/100<span id="max-teams"></span></div>
+            </div>
+            <button id="submit-form" type="submit">Create League</button>
+        </form>
+    </main>
+</div>
+</body>
+</html>

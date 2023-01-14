@@ -6,7 +6,6 @@ let db = new sqlite3.Database('./data/database/data.sqlite', sqlite3.OPEN_READWR
     if (err) {
         console.error(err.message);
     }
-    console.log('Connected to the SQlite database.');
 });
 
 
@@ -55,3 +54,4 @@ window.onload = function() {
         });
     });
 }
+
