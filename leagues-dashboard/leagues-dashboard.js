@@ -1,14 +1,12 @@
 const sqlite3 = require('sqlite3').verbose();
 const fs = require('fs');
-import showLeague from "../teams-dashboard/teams-dashboard.js";
+import showLeague from "../teams-dashboard/loadTeamsDashboard.js";
 
 let db = new sqlite3.Database('./data/database/data.sqlite', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
         console.error(err.message);
     }
 });
-
-
 
 fs.readFile('./data/sql/createTableLeagueDashboard.sql', 'utf8', (err, data) => {
     if (err) {
@@ -19,6 +17,32 @@ fs.readFile('./data/sql/createTableLeagueDashboard.sql', 'utf8', (err, data) => 
         db.run(data, function(err) {
             if (err) {
                 console.log(err);
+            }
+            else{
+                fs.readFile('./data/sql/createTableLeagueTables.sql', 'utf8', (err, data) => {
+                   db.run(data, function(err) {
+                       if (err) {
+                           console.log(err);
+                       }
+                       else{
+                           fs.readFile('./data/sql/createTableMatchdays.sql', 'utf8', (err, data) => {
+                               db.run(data, function (err) {
+                                   if (err) {
+                                       console.log(err);
+                                   } else {
+                                       fs.readFile('./data/sql/createTableGames.sql', 'utf8', (err, data) => {
+                                           db.run(data, function (err) {
+                                               if (err) {
+                                                   console.log(err);
+                                               }
+                                           });
+                                       });
+                                   }
+                               });
+                           });
+                       }
+                   });
+                });
             }
         });
     });

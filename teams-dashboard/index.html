@@ -3,8 +3,51 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script type="module" src="teams-dashboard.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
+<div id="sidebar">
+    <div id="title">Football<br> League Management System</div>
+    <hr>
+    <nav>
+        <a onclick="function createLeague() { window.location.assign('../leagues-dashboard/index.html');} createLeague()">← Go Back</a>
+        <a onclick="function about() { window.location.assign('../about/index.html');} about()">ⓘ About</a>
+    </nav>
+</div>
+<div id="main-content">
+    <header>
+        <form>
+            <h3 id="placeholder_league_name">{placeholder_league_name}</h3>
+        </form>
+    </header>
+    <main id="main">
+        <div id="league-table">
+            <table>
+                <thead>
+                <tr>
+                    <th>Place</th>
+                    <th>Name</th>
+                    <th>Points</th>
+                    <th>Wins</th>
+                    <th>Draws</th>
+                    <th>Losses</th>
+                    <th>Goals Scored</th>
+                    <th>Goals Conceded</th>
+                    <th>Goal Difference</th>
+                </tr>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+    <div id="error" style="display: none; background-color: #f44336; color: white; padding: 16px;">
+        <p>There was an error fetching the data</p>
+    </div>
+
+</div>
 
 </body>
 </html>

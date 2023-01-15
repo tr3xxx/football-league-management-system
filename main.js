@@ -20,7 +20,7 @@ function createWindow () {
     win.loadFile('leagues-dashboard/index.html')
 
     // Öffnen Sie die DevTools.
-   // win.webContents.openDevTools()
+    win.webContents.openDevTools()
 
     win.maximize();
 

@@ -1,0 +1,1 @@
+INSERT INTO matchdays (league_id,matchday_number)

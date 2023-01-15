@@ -1,5 +1,6 @@
 const fs = require('fs');
 const sqlite3 = require('sqlite3').verbose();
+import showLeague from "../teams-dashboard/loadTeamsDashboard.js";
 
 let db = new sqlite3.Database('./data/database/data.sqlite', sqlite3.OPEN_READWRITE, (err) => {
     if (err) {
@@ -56,15 +57,60 @@ submitButton.addEventListener("click", (event) => {
 
         let teamString = "";
 
+        if(document.querySelector("#league-teams").value%2 !== 0){
+            alert("Please enter an even number of teams");
+            return
+        }
         teamList.childNodes.forEach(function(element){
-            teamString += element.innerHTML + ";";
-        });
-        data = data.replace("{teams}", teamString.toString());
-        db.run(data, function(err) {
-            if (err) {
-                console.log(err);
+            if(element.innerHTML !== ""){
+                if(!teamString.includes(element.innerHTML)) {
+                    teamString += element.innerHTML + ";";
+                }
+                else{
+                    alert("Teams can't have the same name!");
+                    return
+                }
+            }
+            else{
+                alert("Team Name cannot be empty!");
+                return;
             }
         });
+
+        data = data.replace("{teamNames}", teamString.toString());
+        console.log(data);
+        db.run(data, function(err) {
+
+            if (err) {
+                console.log(err);
+                return;
+            }
+            fs.readFile('./data/sql/addLeagueTable.sql', 'utf8', (err, data) => {
+                    let originalData = data;
+                    let teams = teamString.split(";");
+                    teams.forEach(function (team) {
+                        let data = originalData;
+                        data = data.replace("{name}", team);
+                        db.all(data, function (err, rows) {
+                            if (err) {
+                                console.log(err);
+                            }
+                        });
+                    });
+                });
+        });
+
+        db.all("SELECT * FROM leagues WHERE league_id = (SELECT MAX(league_id) FROM leagues)", function(err, rows) {
+            if (err) {
+                console.log(err);
+                return;
+            }else{
+                showLeague(rows[0]);
+            }
+
+
+        });
+
 
     });
 });
